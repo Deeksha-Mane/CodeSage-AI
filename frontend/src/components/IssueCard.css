@@ -1,0 +1,94 @@
+.issue-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  background: #fafafa;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.issue-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.issue-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.issue-number {
+  font-weight: bold;
+  color: #666;
+}
+
+.issue-type {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.issue-location {
+  margin-left: auto;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.issue-message,
+.issue-explanation,
+.issue-fix {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.issue-message strong,
+.issue-explanation strong,
+.issue-fix strong {
+  color: #333;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.feedback-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.feedback-btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.feedback-btn.helpful {
+  background: #2ecc71;
+  color: white;
+}
+
+.feedback-btn.helpful:hover {
+  background: #27ae60;
+}
+
+.feedback-btn.not-helpful {
+  background: #e74c3c;
+  color: white;
+}
+
+.feedback-btn.not-helpful:hover {
+  background: #c0392b;
+}
+
+.feedback-thanks {
+  color: #27ae60;
+  font-weight: 600;
+}

@@ -1,0 +1,279 @@
+/* Theme System - Multiple Color Modes */
+
+/* Light Theme (Default) */
+:root,
+[data-theme="light"] {
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-hover: #f0f2f5;
+  
+  /* Text Colors */
+  --text-primary: #1a1a2e;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  
+  /* Border Colors */
+  --border-primary: #e5e7eb;
+  --border-secondary: #d1d5db;
+  --border-hover: #667eea;
+  
+  /* Accent Colors */
+  --accent-primary: #667eea;
+  --accent-secondary: #764ba2;
+  --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  
+  /* Status Colors */
+  --success: #10b981;
+  --success-bg: #d1fae5;
+  --success-border: #6ee7b7;
+  --error: #ef4444;
+  --error-bg: #fee2e2;
+  --error-border: #fca5a5;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+  
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
+  
+  /* Sidebar */
+  --sidebar-bg: #1a1a2e;
+  --sidebar-text: #ffffff;
+  --sidebar-hover: rgba(255, 255, 255, 0.1);
+  --sidebar-active: rgba(102, 126, 234, 0.2);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  /* Background Colors */
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-tertiary: #0f1419;
+  --bg-hover: #252d3d;
+  
+  /* Text Colors */
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  
+  /* Border Colors */
+  --border-primary: #374151;
+  --border-secondary: #4b5563;
+  --border-hover: #667eea;
+  
+  /* Accent Colors */
+  --accent-primary: #818cf8;
+  --accent-secondary: #a78bfa;
+  --accent-gradient: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+  
+  /* Status Colors */
+  --success: #34d399;
+  --success-bg: #064e3b;
+  --success-border: #059669;
+  --error: #f87171;
+  --error-bg: #7f1d1d;
+  --error-border: #dc2626;
+  --warning: #fbbf24;
+  --info: #60a5fa;
+  
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6);
+  
+  /* Sidebar */
+  --sidebar-bg: #0f1419;
+  --sidebar-text: #e5e7eb;
+  --sidebar-hover: rgba(255, 255, 255, 0.1);
+  --sidebar-active: rgba(129, 140, 248, 0.2);
+}
+
+/* Blue Ocean Theme */
+[data-theme="blue"] {
+  /* Background Colors */
+  --bg-primary: #f0f9ff;
+  --bg-secondary: #e0f2fe;
+  --bg-tertiary: #bae6fd;
+  --bg-hover: #d1ebfd;
+  
+  /* Text Colors */
+  --text-primary: #0c4a6e;
+  --text-secondary: #075985;
+  --text-tertiary: #0369a1;
+  
+  /* Border Colors */
+  --border-primary: #7dd3fc;
+  --border-secondary: #38bdf8;
+  --border-hover: #0284c7;
+  
+  /* Accent Colors */
+  --accent-primary: #0284c7;
+  --accent-secondary: #0369a1;
+  --accent-gradient: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  
+  /* Status Colors */
+  --success: #059669;
+  --success-bg: #d1fae5;
+  --success-border: #34d399;
+  --error: #dc2626;
+  --error-bg: #fee2e2;
+  --error-border: #f87171;
+  --warning: #d97706;
+  --info: #0284c7;
+  
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(2, 132, 199, 0.1);
+  --shadow-md: 0 4px 16px rgba(2, 132, 199, 0.15);
+  --shadow-lg: 0 8px 24px rgba(2, 132, 199, 0.2);
+  --shadow-xl: 0 20px 60px rgba(2, 132, 199, 0.25);
+  
+  /* Sidebar */
+  --sidebar-bg: #0c4a6e;
+  --sidebar-text: #f0f9ff;
+  --sidebar-hover: rgba(240, 249, 255, 0.1);
+  --sidebar-active: rgba(14, 165, 233, 0.3);
+}
+
+/* Purple Dream Theme */
+[data-theme="purple"] {
+  /* Background Colors */
+  --bg-primary: #faf5ff;
+  --bg-secondary: #f3e8ff;
+  --bg-tertiary: #e9d5ff;
+  --bg-hover: #ede0ff;
+  
+  /* Text Colors */
+  --text-primary: #581c87;
+  --text-secondary: #7e22ce;
+  --text-tertiary: #9333ea;
+  
+  /* Border Colors */
+  --border-primary: #d8b4fe;
+  --border-secondary: #c084fc;
+  --border-hover: #9333ea;
+  
+  /* Accent Colors */
+  --accent-primary: #9333ea;
+  --accent-secondary: #7e22ce;
+  --accent-gradient: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+  
+  /* Status Colors */
+  --success: #059669;
+  --success-bg: #d1fae5;
+  --success-border: #34d399;
+  --error: #dc2626;
+  --error-bg: #fee2e2;
+  --error-border: #f87171;
+  --warning: #d97706;
+  --info: #9333ea;
+  
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(147, 51, 234, 0.1);
+  --shadow-md: 0 4px 16px rgba(147, 51, 234, 0.15);
+  --shadow-lg: 0 8px 24px rgba(147, 51, 234, 0.2);
+  --shadow-xl: 0 20px 60px rgba(147, 51, 234, 0.25);
+  
+  /* Sidebar */
+  --sidebar-bg: #581c87;
+  --sidebar-text: #faf5ff;
+  --sidebar-hover: rgba(250, 245, 255, 0.1);
+  --sidebar-active: rgba(168, 85, 247, 0.3);
+}
+
+/* Green Forest Theme */
+[data-theme="green"] {
+  /* Background Colors */
+  --bg-primary: #f0fdf4;
+  --bg-secondary: #dcfce7;
+  --bg-tertiary: #bbf7d0;
+  --bg-hover: #d1f7e0;
+  
+  /* Text Colors */
+  --text-primary: #14532d;
+  --text-secondary: #166534;
+  --text-tertiary: #15803d;
+  
+  /* Border Colors */
+  --border-primary: #86efac;
+  --border-secondary: #4ade80;
+  --border-hover: #16a34a;
+  
+  /* Accent Colors */
+  --accent-primary: #16a34a;
+  --accent-secondary: #15803d;
+  --accent-gradient: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  
+  /* Status Colors */
+  --success: #16a34a;
+  --success-bg: #dcfce7;
+  --success-border: #4ade80;
+  --error: #dc2626;
+  --error-bg: #fee2e2;
+  --error-border: #f87171;
+  --warning: #d97706;
+  --info: #16a34a;
+  
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(22, 163, 74, 0.1);
+  --shadow-md: 0 4px 16px rgba(22, 163, 74, 0.15);
+  --shadow-lg: 0 8px 24px rgba(22, 163, 74, 0.2);
+  --shadow-xl: 0 20px 60px rgba(22, 163, 74, 0.25);
+  
+  /* Sidebar */
+  --sidebar-bg: #14532d;
+  --sidebar-text: #f0fdf4;
+  --sidebar-hover: rgba(240, 253, 244, 0.1);
+  --sidebar-active: rgba(34, 197, 94, 0.3);
+}
+
+/* Minimal transitions - only for interactive elements */
+html, body, div, section, nav, header, footer, main, article {
+  scroll-behavior: auto !important;
+}
+
+/* Allow smooth transitions on interactive elements and cards */
+button,
+a,
+.btn-primary,
+.btn-secondary,
+.btn-hero-primary,
+.btn-hero-secondary,
+.social-btn,
+.btn-submit,
+.feature-card,
+.testimonial-card,
+.pricing-card,
+.step-card,
+.stat,
+.logo,
+.feature-icon-wrapper,
+.back-to-top,
+.auth-container,
+.logo-circle,
+input,
+.form-group input,
+.remember-me,
+.link,
+.forgot-password {
+  transition: all 0.3s ease !important;
+}
+
+/* Faster transitions for buttons */
+button:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-hero-primary:hover,
+.btn-hero-secondary:hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+}
+
+
+/* Scroll behavior fix */
+html, body {
+  scroll-behavior: auto !important;
+}

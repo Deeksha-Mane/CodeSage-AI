@@ -1,0 +1,292 @@
+.history-container {
+  padding: 2rem;
+}
+
+.history-header {
+  margin-bottom: 2rem;
+}
+
+.history-header h2 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.history-header p {
+  color: var(--text-secondary);
+}
+
+.history-loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.no-history {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.no-history-icon {
+  font-size: 4rem;
+  color: var(--text-tertiary);
+  margin-bottom: 1rem;
+}
+
+.no-history h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.no-history p {
+  color: var(--text-secondary);
+}
+
+.history-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.history-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.history-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.history-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.history-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.history-icon {
+  color: var(--accent-primary);
+}
+
+.history-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-btn, .delete-btn {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.view-btn {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.view-btn:hover {
+  background: var(--accent-secondary);
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background: var(--error);
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+.history-card-body {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.history-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.stat-icon {
+  color: var(--accent-primary);
+}
+
+.history-code-preview {
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.history-code-preview pre {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Review Detail */
+.review-detail {
+  padding: 2rem;
+}
+
+.back-btn {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: var(--accent-secondary);
+  transform: translateX(-5px);
+}
+
+.review-detail-header {
+  margin-bottom: 2rem;
+}
+
+.review-detail-header h2 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.review-date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.review-code {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.review-code h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.review-code pre {
+  background: var(--bg-tertiary);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.review-issues h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.issue-item {
+  background: var(--bg-primary);
+  border-left: 4px solid var(--accent-primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.issue-item.issue-error {
+  border-left-color: var(--error);
+}
+
+.issue-item.issue-warning {
+  border-left-color: var(--warning);
+}
+
+.issue-item.issue-convention {
+  border-left-color: var(--info);
+}
+
+.issue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.issue-type {
+  background: var(--accent-primary);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.issue-line {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.issue-message {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.issue-explanation {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.issue-fix {
+  background: var(--success-bg);
+  border-left: 3px solid var(--success);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.issue-fix strong {
+  color: var(--success);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.issue-fix p {
+  color: var(--text-primary);
+  margin: 0;
+}
