@@ -37,7 +37,7 @@ CodeSage AI is a modern web application that provides intelligent code review an
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/codesage-ai.git
+git clone https://github.com/Deeksha-Mane/CodeSage-AI.git
 cd codesage-ai
 ```
 
@@ -57,10 +57,7 @@ source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Create .env file
-cp .env.example .env
-# Edit .env and add your MongoDB URL and SECRET_KEY
-```
+uvicorn main:app --reload
 
 ### 3. Frontend Setup
 ```bash
@@ -93,8 +90,7 @@ LLM_API_KEY=your_api_key_here
 ```bash
 cd backend
 venv\Scripts\activate  # Windows
-# or: source venv/bin/activate  # Mac/Linux
-python main.py
+uvicorn main:app --reload
 ```
 Backend runs on: http://localhost:8000
 
@@ -149,45 +145,3 @@ codesage-ai/
 │   └── package.json       # Node dependencies
 └── README.md
 ```
-
-## 🔒 Security
-
-- Passwords are hashed using bcrypt
-- JWT tokens for authentication
-- MongoDB Atlas with TLS/SSL
-- Environment variables for sensitive data
-- CORS configured for frontend origin
-
-## 🚧 Roadmap
-
-- [ ] Real AI/LLM integration (OpenAI, Anthropic)
-- [ ] Support for multiple languages (JavaScript, Java, C++)
-- [ ] Real-time collaboration
-- [ ] Code comparison and diff view
-- [ ] GitHub integration
-- [ ] VS Code extension
-- [ ] Payment integration (Stripe)
-- [ ] Team features
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 👨‍💻 Author
-
-Your Name - [GitHub](https://github.com/yourusername)
-
-## 🙏 Acknowledgments
-
-- Pylint for static code analysis
-- FastAPI for the amazing Python framework
-- React team for the frontend library
-- MongoDB for the database solution
-
----
-
-**Note:** This is a learning project. For production use, ensure proper security measures, error handling, and testing.
