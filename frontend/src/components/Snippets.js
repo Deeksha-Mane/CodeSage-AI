@@ -12,7 +12,6 @@ function Snippets({ onInsertSnippet }) {
   const [showModal, setShowModal] = useState(false);
   const [editingSnippet, setEditingSnippet] = useState(null);
   const [copiedId, setCopiedId] = useState(null);
-  const [tags, setTags] = useState([]);
   const [counts, setCounts] = useState({});
   
   const [formData, setFormData] = useState({
@@ -39,7 +38,7 @@ function Snippets({ onInsertSnippet }) {
 
   useEffect(() => {
     filterSnippets();
-  }, [searchTerm, selectedLanguage, snippets]);
+  }, [searchTerm, selectedLanguage, snippets, filterSnippets]);
 
   const fetchSnippets = async () => {
     try {

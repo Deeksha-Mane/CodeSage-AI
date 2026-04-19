@@ -93,7 +93,7 @@ int main() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [code, loading, language]);
+  }, [code, loading, language, handleAnalyze]);
 
   const handleEditorDidMount = (editor, monaco) => {
     editorRef.current = editor;

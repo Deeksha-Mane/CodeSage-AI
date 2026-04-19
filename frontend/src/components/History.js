@@ -17,7 +17,7 @@ function History() {
 
   useEffect(() => {
     filterReviews();
-  }, [searchTerm, filterType, reviews]);
+  }, [searchTerm, filterType, reviews, filterReviews]);
 
   const fetchHistory = async () => {
     try {

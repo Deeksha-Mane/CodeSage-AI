@@ -43,10 +43,10 @@ function LandingPage() {
           </div>
           
           <div className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
-            <a onClick={() => scrollToSection('features')} className="nav-link">Features</a>
-            <a onClick={() => scrollToSection('how-it-works')} className="nav-link">How It Works</a>
-            <a onClick={() => scrollToSection('pricing')} className="nav-link">Pricing</a>
-            <a href="#" className="nav-link">Documentation</a>
+            <button type="button" onClick={() => scrollToSection('features')} className="nav-link">Features</button>
+            <button type="button" onClick={() => scrollToSection('how-it-works')} className="nav-link">How It Works</button>
+            <button type="button" onClick={() => scrollToSection('pricing')} className="nav-link">Pricing</button>
+            <button type="button" onClick={() => {}} className="nav-link">Documentation</button>
           </div>
 
           <div className="nav-buttons">
