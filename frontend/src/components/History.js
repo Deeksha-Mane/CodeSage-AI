@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FaCode, FaCalendar, FaExclamationTriangle, FaTrash, FaEye, FaDownload, FaSearch } from 'react-icons/fa';
+import API_BASE_URL from '../config';
 import './History.css';
 
 function History() {
@@ -21,7 +22,7 @@ function History() {
   const fetchHistory = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:8000/history', {
+      const response = await fetch(`${API_BASE_URL}/history`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -63,7 +64,7 @@ function History() {
   const viewReview = async (reviewId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:8000/history/${reviewId}`, {
+      const response = await fetch(`${API_BASE_URL}/history/${reviewId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -80,7 +81,7 @@ function History() {
 
     try {
       const token = localStorage.getItem('token');
-      await fetch(`http://localhost:8000/history/${reviewId}`, {
+      await fetch(`${API_BASE_URL}/history/${reviewId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

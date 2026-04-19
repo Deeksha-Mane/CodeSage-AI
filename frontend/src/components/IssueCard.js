@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaCopy, FaCheck } from 'react-icons/fa';
+import API_BASE_URL from '../config';
 import './IssueCard.css';
 
 function IssueCard({ issue, index }) {
@@ -8,7 +9,7 @@ function IssueCard({ issue, index }) {
 
   const handleFeedback = async (isHelpful) => {
     try {
-      await fetch('http://localhost:8000/feedback', {
+      await fetch(`${API_BASE_URL}/feedback`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

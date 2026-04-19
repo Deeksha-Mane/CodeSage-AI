@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FaCode, FaPlus, FaSearch, FaEdit, FaTrash, FaCopy, FaCheck, FaTimes, FaTag } from 'react-icons/fa';
+import API_BASE_URL from '../config';
 import './Snippets.css';
 
 function Snippets({ onInsertSnippet }) {
@@ -43,7 +44,7 @@ function Snippets({ onInsertSnippet }) {
   const fetchSnippets = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:8000/snippets', {
+      const response = await fetch(`${API_BASE_URL}/snippets`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -84,8 +85,8 @@ function Snippets({ onInsertSnippet }) {
       const tagsArray = formData.tags.split(',').map(t => t.trim()).filter(t => t);
       
       const url = editingSnippet
-        ? `http://localhost:8000/snippets/${editingSnippet.id}`
-        : 'http://localhost:8000/snippets';
+        ? `${API_BASE_URL}/snippets/${editingSnippet.id}`
+        : `${API_BASE_URL}/snippets`;
       
       const method = editingSnippet ? 'PUT' : 'POST';
       
@@ -130,7 +131,7 @@ function Snippets({ onInsertSnippet }) {
 
     try {
       const token = localStorage.getItem('token');
-      await fetch(`http://localhost:8000/snippets/${snippetId}`, {
+      await fetch(`${API_BASE_URL}/snippets/${snippetId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

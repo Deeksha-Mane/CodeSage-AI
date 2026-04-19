@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FaChartBar, FaCode, FaExclamationTriangle, FaCheckCircle, FaTrophy } from 'react-icons/fa';
+import API_BASE_URL from '../config';
 import './Analytics.css';
 
 function Analytics() {
@@ -13,7 +14,7 @@ function Analytics() {
   const fetchAnalytics = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:8000/analytics/stats', {
+      const response = await fetch(`${API_BASE_URL}/analytics/stats`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
