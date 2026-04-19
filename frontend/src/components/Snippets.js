@@ -51,7 +51,6 @@ function Snippets({ onInsertSnippet }) {
       const data = await response.json();
       setSnippets(data.snippets);
       setFilteredSnippets(data.snippets);
-      setTags(data.tags || []);
       setCounts(data.counts || {});
     } catch (error) {
       console.error('Error fetching snippets:', error);
