@@ -2,7 +2,7 @@
 from fastapi import FastAPI, HTTPException, Header
 from fastapi.middleware.cors import CORSMiddleware
 import hashlib
-from analyzer import PylintAnalyzer
+from analyzer import AnalyzerFactory
 from llm import get_llm_provider
 from feedback import FeedbackManager
 from history import HistoryManager
@@ -23,7 +23,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-analyzer = PylintAnalyzer()
 llm_provider = get_llm_provider("dummy")
 feedback_manager = FeedbackManager()
 history_manager = HistoryManager()
@@ -32,7 +31,17 @@ auth_handler = AuthHandler()
 
 @app.get("/")
 def read_root():
-    return {"message": "CodeSage AI API", "status": "running"}
+    return {
+        "message": "CodeSage AI API", 
+        "status": "running",
+        "supported_languages": AnalyzerFactory.get_supported_languages()
+    }
+
+
+@app.get("/languages")
+def get_supported_languages():
+    """Get list of supported programming languages"""
+    return {"languages": AnalyzerFactory.get_supported_languages()}
 
 
 @app.post("/analyze", response_model=AnalysisResponse)
@@ -44,7 +53,24 @@ def analyze_code(request: CodeAnalysisRequest, authorization: str = Header(None)
         if authorization and authorization.startswith("Bearer "):
             user_email = get_current_user(authorization)
         
-        issues = analyzer.analyze(request.code)
+        # Detect or use provided language
+        language = request.language
+        if not language:
+            language = AnalyzerFactory.detect_language(request.code)
+        
+        # Get appropriate analyzer
+        try:
+            analyzer = AnalyzerFactory.get_analyzer(language)
+        except ValueError as e:
+            raise HTTPException(status_code=400, detail=str(e))
+        
+        # Analyze code
+        if language in ['javascript', 'typescript']:
+            issues = analyzer.analyze(request.code, language)
+        elif language in ['c', 'cpp']:
+            issues = analyzer.analyze(request.code, language)
+        else:
+            issues = analyzer.analyze(request.code)
         
         enriched_issues = []
         for issue in issues:
@@ -69,11 +95,12 @@ def analyze_code(request: CodeAnalysisRequest, authorization: str = Header(None)
         # Save to history if user is authenticated
         if user_email:
             issues_dict = [issue.dict() for issue in enriched_issues]
-            history_manager.save_review(user_email, request.code, issues_dict)
+            history_manager.save_review(user_email, request.code, issues_dict, language)
         
         return AnalysisResponse(
             issues=enriched_issues,
-            total_issues=len(enriched_issues)
+            total_issues=len(enriched_issues),
+            language=language
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

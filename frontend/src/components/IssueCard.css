@@ -1,7 +1,7 @@
 .issue-card {
   border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  padding: 1rem;
+  border-radius: 8px;
+  padding: 1.25rem;
   background: #fafafa;
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -14,35 +14,67 @@
 .issue-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
   margin-bottom: 0.75rem;
+}
+
+.issue-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .issue-number {
   font-weight: bold;
   color: #666;
+  font-size: 0.95rem;
 }
 
 .issue-type {
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
   color: white;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.severity-badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
 }
 
 .issue-location {
-  margin-left: auto;
   color: #666;
   font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.copy-issue-btn {
+  background: transparent;
+  border: 1px solid #e0e0e0;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #667eea;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.copy-issue-btn:hover {
+  background: #f0f0f0;
+  border-color: #667eea;
 }
 
 .issue-message,
 .issue-explanation,
 .issue-fix {
   margin-bottom: 0.75rem;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .issue-message strong,
@@ -64,7 +96,7 @@
 .feedback-btn {
   padding: 0.4rem 0.8rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s;
@@ -77,6 +109,7 @@
 
 .feedback-btn.helpful:hover {
   background: #27ae60;
+  transform: scale(1.05);
 }
 
 .feedback-btn.not-helpful {
@@ -86,6 +119,7 @@
 
 .feedback-btn.not-helpful:hover {
   background: #c0392b;
+  transform: scale(1.05);
 }
 
 .feedback-thanks {

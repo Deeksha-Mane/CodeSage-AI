@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { FaCopy, FaCheck } from 'react-icons/fa';
 import './IssueCard.css';
 
 function IssueCard({ issue, index }) {
   const [feedbackGiven, setFeedbackGiven] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const handleFeedback = async (isHelpful) => {
     try {
@@ -26,6 +28,18 @@ function IssueCard({ issue, index }) {
     }
   };
 
+  const handleCopy = () => {
+    const text = `Issue #${index + 1} - ${issue.type.toUpperCase()}
+Line: ${issue.line}
+Message: ${issue.message}
+Explanation: ${issue.explanation}
+Suggested Fix: ${issue.suggested_fix}`;
+    
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const getTypeColor = (type) => {
     const colors = {
       error: '#e74c3c',
@@ -36,17 +50,48 @@ function IssueCard({ issue, index }) {
     return colors[type] || '#95a5a6';
   };
 
+  const getSeverityBadge = (type) => {
+    const severities = {
+      error: { label: 'Critical', color: '#e74c3c' },
+      warning: { label: 'High', color: '#f39c12' },
+      convention: { label: 'Medium', color: '#3498db' },
+      refactor: { label: 'Low', color: '#9b59b6' }
+    };
+    return severities[type] || { label: 'Info', color: '#95a5a6' };
+  };
+
+  const severity = getSeverityBadge(issue.type);
+
   return (
     <div className="issue-card">
       <div className="issue-header">
-        <span className="issue-number">#{index + 1}</span>
-        <span 
-          className="issue-type" 
-          style={{ backgroundColor: getTypeColor(issue.type) }}
+        <div className="issue-header-left">
+          <span className="issue-number">#{index + 1}</span>
+          <span 
+            className="issue-type" 
+            style={{ backgroundColor: getTypeColor(issue.type) }}
+          >
+            {issue.type}
+          </span>
+          <span 
+            className="severity-badge"
+            style={{ 
+              backgroundColor: `${severity.color}20`,
+              color: severity.color,
+              border: `1px solid ${severity.color}`
+            }}
+          >
+            {severity.label}
+          </span>
+          <span className="issue-location">Line {issue.line}</span>
+        </div>
+        <button 
+          className="copy-issue-btn"
+          onClick={handleCopy}
+          title="Copy issue details"
         >
-          {issue.type}
-        </span>
-        <span className="issue-location">Line {issue.line}</span>
+          {copied ? <FaCheck /> : <FaCopy />}
+        </button>
       </div>
       
       <div className="issue-message">

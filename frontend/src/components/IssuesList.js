@@ -1,8 +1,9 @@
 import React from 'react';
+import { FaDownload } from 'react-icons/fa';
 import IssueCard from './IssueCard';
 import './IssuesList.css';
 
-function IssuesList({ issues }) {
+function IssuesList({ issues, onExport }) {
   if (!issues || issues.length === 0) {
     return (
       <div className="issues-container">
@@ -16,7 +17,19 @@ function IssuesList({ issues }) {
 
   return (
     <div className="issues-container">
-      <h2>Found {issues.length} Issue{issues.length !== 1 ? 's' : ''}</h2>
+      <div className="issues-header">
+        <h2>Found {issues.length} Issue{issues.length !== 1 ? 's' : ''}</h2>
+        {onExport && (
+          <div className="export-buttons">
+            <button className="export-btn" onClick={() => onExport('text')}>
+              <FaDownload /> Export as Text
+            </button>
+            <button className="export-btn markdown" onClick={() => onExport('markdown')}>
+              <FaDownload /> Export as Markdown
+            </button>
+          </div>
+        )}
+      </div>
       <div className="issues-list">
         {issues.map((issue, index) => (
           <IssueCard key={issue.issue_id} issue={issue} index={index} />

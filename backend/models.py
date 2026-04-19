@@ -5,6 +5,7 @@ from typing import Optional
 
 class CodeAnalysisRequest(BaseModel):
     code: str
+    language: Optional[str] = None  # auto-detect if not provided
 
 
 class IssueResponse(BaseModel):
@@ -21,6 +22,7 @@ class IssueResponse(BaseModel):
 class AnalysisResponse(BaseModel):
     issues: list[IssueResponse]
     total_issues: int
+    language: Optional[str] = None
 
 
 class FeedbackRequest(BaseModel):

@@ -10,6 +10,50 @@
   color: #333;
 }
 
+.issues-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.issues-header h2 {
+  margin: 0;
+}
+
+.export-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.export-btn:hover {
+  background: #1d4ed8;
+}
+
+.export-btn.markdown {
+  background: #7c3aed;
+}
+
+.export-btn.markdown:hover {
+  background: #6d28d9;
+}
+
 .issues-list {
   display: flex;
   flex-direction: column;
