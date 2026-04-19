@@ -358,21 +358,21 @@ function LandingPage() {
           </div>
           <div className="footer-section">
             <h4>Product</h4>
-            <a href="#">Features</a>
-            <a href="#">Pricing</a>
-            <a href="#">Documentation</a>
+            <button type="button" onClick={() => {}}>Features</button>
+            <button type="button" onClick={() => {}}>Pricing</button>
+            <button type="button" onClick={() => {}}>Documentation</button>
           </div>
           <div className="footer-section">
             <h4>Company</h4>
-            <a href="#">About</a>
-            <a href="#">Blog</a>
-            <a href="#">Careers</a>
+            <button type="button" onClick={() => {}}>About</button>
+            <button type="button" onClick={() => {}}>Blog</button>
+            <button type="button" onClick={() => {}}>Careers</button>
           </div>
           <div className="footer-section">
             <h4>Support</h4>
-            <a href="#">Help Center</a>
-            <a href="#">Contact</a>
-            <a href="#">Privacy</a>
+            <button type="button" onClick={() => {}}>Help Center</button>
+            <button type="button" onClick={() => {}}>Contact</button>
+            <button type="button" onClick={() => {}}>Privacy</button>
           </div>
         </div>
         <div className="footer-bottom">

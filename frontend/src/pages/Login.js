@@ -127,7 +127,7 @@ function Login() {
               <input type="checkbox" />
               <span>Remember me</span>
             </label>
-            <a href="#" className="forgot-password">Forgot password?</a>
+            <button type="button" className="forgot-password" onClick={() => alert('Password reset feature coming soon!')}>Forgot password?</button>
           </div>
 
           <button type="submit" className="btn-submit" disabled={loading}>
