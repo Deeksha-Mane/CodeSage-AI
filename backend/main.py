@@ -18,7 +18,12 @@ app = FastAPI(title="CodeSage AI", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://code-sage-ai-umber.vercel.app",
+        "https://code-sage-ai-git-main-deeksha-manes-projects.vercel.app",
+        "https://code-sage-l89n0o5k6-deeksha-manes-projects.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
