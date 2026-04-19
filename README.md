@@ -129,57 +129,6 @@ npm start
 
 ✅ Frontend will run on: **http://localhost:3000**
 
-### Access the Application
-
-Open your browser and go to: **http://localhost:3000**
-
-## 🔧 Troubleshooting
-
-### Backend Issues
-
-**Problem: `ImportError` or module not found**
-```bash
-# Make sure virtual environment is activated
-venv\Scripts\activate
-
-# Reinstall dependencies
-pip install -r requirements.txt
-```
-
-**Problem: MongoDB connection error**
-- Check your `MONGODB_URL` in `.env` file
-- Ensure your IP is whitelisted in MongoDB Atlas
-- Verify database user credentials
-
-**Problem: Port 8000 already in use**
-```bash
-# Use a different port
-uvicorn main:app --reload --port 8001
-```
-
-### Frontend Issues
-
-**Problem: `npm install` fails**
-```bash
-# Clear npm cache
-npm cache clean --force
-
-# Delete node_modules and reinstall
-rm -rf node_modules package-lock.json
-npm install
-```
-
-**Problem: Port 3000 already in use**
-- React will automatically prompt to use a different port
-- Or manually set port: `PORT=3001 npm start`
-
-**Problem: Cannot connect to backend**
-- Ensure backend is running on http://localhost:8000
-- Check browser console for CORS errors
-- Verify API endpoints in frontend code
-
-## 📖 Usage Guide
-
 ### First Time Setup
 
 1. **Create MongoDB Atlas Account** (if you don't have one)
