@@ -38,7 +38,8 @@ function Snippets({ onInsertSnippet }) {
 
   useEffect(() => {
     filterSnippets();
-  }, [searchTerm, selectedLanguage, snippets, filterSnippets]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm, selectedLanguage, snippets]);
 
   const fetchSnippets = async () => {
     try {

@@ -93,7 +93,8 @@ int main() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [code, loading, language, handleAnalyze]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [code, loading, language]);
 
   const handleEditorDidMount = (editor, monaco) => {
     editorRef.current = editor;

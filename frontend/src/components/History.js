@@ -17,7 +17,8 @@ function History() {
 
   useEffect(() => {
     filterReviews();
-  }, [searchTerm, filterType, reviews, filterReviews]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm, filterType, reviews]);
 
   const fetchHistory = async () => {
     try {
