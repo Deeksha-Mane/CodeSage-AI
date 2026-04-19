@@ -7,6 +7,7 @@ from llm import get_llm_provider
 from feedback import FeedbackManager
 from history import HistoryManager
 from auth import AuthHandler
+from snippets import SnippetsManager
 from models import (
     CodeAnalysisRequest, AnalysisResponse, IssueResponse,
     FeedbackRequest, FeedbackResponse, UserSignup, UserLogin, TokenResponse,
@@ -27,6 +28,7 @@ llm_provider = get_llm_provider("dummy")
 feedback_manager = FeedbackManager()
 history_manager = HistoryManager()
 auth_handler = AuthHandler()
+snippets_manager = SnippetsManager()
 
 
 @app.get("/")
@@ -332,6 +334,116 @@ def get_analytics_stats(authorization: str = Header(None)):
             "stats": stats,
             "issues_by_type": issues_by_type
         }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# Snippets endpoints
+@app.post("/snippets")
+def create_snippet(
+    title: str,
+    code: str,
+    language: str,
+    description: str = "",
+    tags: list = None,
+    authorization: str = Header(None)
+):
+    """Create a new code snippet"""
+    try:
+        email = get_current_user(authorization)
+        snippet_id = snippets_manager.save_snippet(
+            email, title, code, language, description, tags or []
+        )
+        return {"snippet_id": snippet_id, "message": "Snippet saved successfully"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/snippets")
+def get_snippets(
+    authorization: str = Header(None),
+    language: str = None,
+    search: str = None,
+    limit: int = 50,
+    skip: int = 0
+):
+    """Get user's code snippets"""
+    try:
+        email = get_current_user(authorization)
+        snippets = snippets_manager.get_user_snippets(email, language, search, limit, skip)
+        tags = snippets_manager.get_user_tags(email)
+        counts = snippets_manager.get_snippet_count(email)
+        
+        return {
+            "snippets": snippets,
+            "total": len(snippets),
+            "tags": tags,
+            "counts": counts
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/snippets/{snippet_id}")
+def get_snippet(snippet_id: str, authorization: str = Header(None)):
+    """Get a specific snippet"""
+    try:
+        email = get_current_user(authorization)
+        snippet = snippets_manager.get_snippet_by_id(snippet_id, email)
+        
+        if not snippet:
+            raise HTTPException(status_code=404, detail="Snippet not found")
+        
+        return snippet
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.put("/snippets/{snippet_id}")
+def update_snippet(
+    snippet_id: str,
+    title: str = None,
+    code: str = None,
+    description: str = None,
+    tags: list = None,
+    authorization: str = Header(None)
+):
+    """Update a snippet"""
+    try:
+        email = get_current_user(authorization)
+        success = snippets_manager.update_snippet(
+            snippet_id, email, title, code, description, tags
+        )
+        
+        if not success:
+            raise HTTPException(status_code=404, detail="Snippet not found")
+        
+        return {"message": "Snippet updated successfully"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.delete("/snippets/{snippet_id}")
+def delete_snippet(snippet_id: str, authorization: str = Header(None)):
+    """Delete a snippet"""
+    try:
+        email = get_current_user(authorization)
+        success = snippets_manager.delete_snippet(snippet_id, email)
+        
+        if not success:
+            raise HTTPException(status_code=404, detail="Snippet not found")
+        
+        return {"message": "Snippet deleted successfully"}
     except HTTPException:
         raise
     except Exception as e:

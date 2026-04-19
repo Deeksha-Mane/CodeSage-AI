@@ -4,14 +4,19 @@ CodeSage AI is a modern web application that provides intelligent code review an
 
 ## ✨ Features
 
-- **🔍 Static Code Analysis** - Powered by Pylint for comprehensive Python code analysis
+- **🔍 Multi-Language Support** - Analyze Python, JavaScript, TypeScript, Java, C, and C++ code
+- **✍️ Monaco Editor** - Professional VS Code-like editor with syntax highlighting and IntelliSense
 - **📊 Analytics Dashboard** - Track your code quality metrics and improvement over time
 - **📜 Review History** - Access all your past code reviews and analysis results
 - **📥 Export Reports** - Download analysis as Text or Markdown files
+- **🔄 Code Comparison** - Before/After view with fix suggestions
+- **📚 Snippets Library** - Save and reuse your favorite code snippets
 - **🎨 Multiple Themes** - Choose from 5 beautiful themes (Light, Dark, Blue Ocean, Purple Dream, Green Forest)
 - **🔐 Secure Authentication** - JWT-based authentication with MongoDB Atlas
 - **👤 Profile Management** - Update profile, change password, manage account
 - **📱 Responsive Design** - Works seamlessly on desktop, tablet, and mobile
+- **⌨️ Keyboard Shortcuts** - Ctrl+Enter to analyze code quickly
+- **🔍 Search & Filter** - Find snippets and history easily
 
 ## 🚀 Tech Stack
 
