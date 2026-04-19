@@ -26,12 +26,16 @@ class AuthHandler:
         self.users_collection = self.db['users']
     
     def hash_password(self, password: str) -> str:
-        # Truncate password to 72 bytes for bcrypt
-        return pwd_context.hash(password[:72])
+        # Truncate password to 72 bytes for bcrypt (encode to bytes first to handle multi-byte chars)
+        password_bytes = password.encode('utf-8')[:72]
+        truncated_password = password_bytes.decode('utf-8', errors='ignore')
+        return pwd_context.hash(truncated_password)
     
     def verify_password(self, plain_password: str, hashed_password: str) -> bool:
-        # Truncate password to 72 bytes for bcrypt
-        return pwd_context.verify(plain_password[:72], hashed_password)
+        # Truncate password to 72 bytes for bcrypt (encode to bytes first to handle multi-byte chars)
+        password_bytes = plain_password.encode('utf-8')[:72]
+        truncated_password = password_bytes.decode('utf-8', errors='ignore')
+        return pwd_context.verify(truncated_password, hashed_password)
     
     def create_access_token(self, data: dict):
         to_encode = data.copy()
