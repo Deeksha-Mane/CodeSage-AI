@@ -23,6 +23,7 @@ function Analytics() {
       setStats(data);
     } catch (error) {
       console.error('Error fetching analytics:', error);
+      setStats(null);
     } finally {
       setLoading(false);
     }
@@ -32,11 +33,12 @@ function Analytics() {
     return <div className="analytics-loading">Loading analytics...</div>;
   }
 
-  if (!stats) {
+  if (!stats || !stats.stats) {
     return <div className="analytics-error">Failed to load analytics</div>;
   }
 
-  const { stats: userStats, issues_by_type } = stats;
+  const userStats = stats.stats || { total_reviews: 0, total_issues: 0, avg_issues_per_review: 0 };
+  const issues_by_type = stats.issues_by_type || {};
 
   const getIssueTypeColor = (type) => {
     const colors = {

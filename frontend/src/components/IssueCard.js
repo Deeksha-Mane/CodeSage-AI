@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { FaCopy, FaCheck } from 'react-icons/fa';
+import ReactMarkdown from 'react-markdown';
+import rehypeHighlight from 'rehype-highlight';
+import 'highlight.js/styles/github-dark.css';
 import API_BASE_URL from '../config';
 import './IssueCard.css';
 
@@ -100,11 +103,51 @@ Suggested Fix: ${issue.suggested_fix}`;
       </div>
       
       <div className="issue-explanation">
-        <strong>Explanation:</strong> {issue.explanation}
+        <strong>AI Analysis:</strong>
+        <div className="markdown-content">
+          <ReactMarkdown 
+            rehypePlugins={[rehypeHighlight]}
+            components={{
+              code({node, inline, className, children, ...props}) {
+                return inline ? (
+                  <code className="inline-code" {...props}>
+                    {children}
+                  </code>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              }
+            }}
+          >
+            {issue.explanation}
+          </ReactMarkdown>
+        </div>
       </div>
       
       <div className="issue-fix">
-        <strong>Suggested Fix:</strong> {issue.suggested_fix}
+        <strong>Suggested Fix:</strong>
+        <div className="markdown-content">
+          <ReactMarkdown 
+            rehypePlugins={[rehypeHighlight]}
+            components={{
+              code({node, inline, className, children, ...props}) {
+                return inline ? (
+                  <code className="inline-code" {...props}>
+                    {children}
+                  </code>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              }
+            }}
+          >
+            {issue.suggested_fix}
+          </ReactMarkdown>
+        </div>
       </div>
       
       <div className="feedback-section">

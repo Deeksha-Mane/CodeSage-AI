@@ -26,3 +26,16 @@ class DummyLLMProvider(LLMProvider):
             'explanation': explanation,
             'suggested_fix': suggested_fix
         }
+    
+    def chat(self, message: str, context: str = "") -> str:
+        """Generate dummy chat response"""
+        return f"This is a dummy response. To get real AI responses, configure a Gemini API key in your .env file (LLM_PROVIDER=gemini, GEMINI_API_KEY=your_key). Your question was: {message}"
+    
+    def convert_code(self, code: str, from_language: str, to_language: str) -> dict:
+        """Generate dummy conversion response"""
+        return {
+            "success": False,
+            "error": "Dummy provider - Configure Gemini API key for real code conversion",
+            "from_language": from_language,
+            "to_language": to_language
+        }

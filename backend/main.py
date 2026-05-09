@@ -2,6 +2,7 @@
 from fastapi import FastAPI, HTTPException, Header
 from fastapi.middleware.cors import CORSMiddleware
 import hashlib
+import os
 from analyzer import AnalyzerFactory
 from llm import get_llm_provider
 from feedback import FeedbackManager
@@ -11,7 +12,8 @@ from snippets import SnippetsManager
 from models import (
     CodeAnalysisRequest, AnalysisResponse, IssueResponse,
     FeedbackRequest, FeedbackResponse, UserSignup, UserLogin, TokenResponse,
-    UpdateProfileRequest, ChangePasswordRequest, DeleteAccountRequest
+    UpdateProfileRequest, ChangePasswordRequest, DeleteAccountRequest,
+    ChatRequest, ChatResponse, CodeConvertRequest, CodeConvertResponse
 )
 
 app = FastAPI(title="CodeSage AI", version="1.0.0")
@@ -29,7 +31,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-llm_provider = get_llm_provider("dummy")
+llm_provider = get_llm_provider(os.getenv("LLM_PROVIDER", "dummy"))
 feedback_manager = FeedbackManager()
 history_manager = HistoryManager()
 auth_handler = AuthHandler()
@@ -449,6 +451,38 @@ def delete_snippet(snippet_id: str, authorization: str = Header(None)):
             raise HTTPException(status_code=404, detail="Snippet not found")
         
         return {"message": "Snippet deleted successfully"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# Chat endpoint
+@app.post("/chat", response_model=ChatResponse)
+def chat_with_ai(request: ChatRequest, authorization: str = Header(None)):
+    """Chat with AI assistant about coding questions"""
+    try:
+        email = get_current_user(authorization)
+        response = llm_provider.chat(request.message, request.context)
+        return ChatResponse(response=response)
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# Code Converter endpoint
+@app.post("/convert", response_model=CodeConvertResponse)
+def convert_code(request: CodeConvertRequest, authorization: str = Header(None)):
+    """Convert code from one language to another"""
+    try:
+        email = get_current_user(authorization)
+        result = llm_provider.convert_code(
+            request.code,
+            request.from_language,
+            request.to_language
+        )
+        return CodeConvertResponse(**result)
     except HTTPException:
         raise
     except Exception as e:

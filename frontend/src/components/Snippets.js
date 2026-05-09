@@ -50,18 +50,20 @@ function Snippets({ onInsertSnippet }) {
         }
       });
       const data = await response.json();
-      setSnippets(data.snippets);
-      setFilteredSnippets(data.snippets);
+      setSnippets(data.snippets || []);
+      setFilteredSnippets(data.snippets || []);
       setCounts(data.counts || {});
     } catch (error) {
       console.error('Error fetching snippets:', error);
+      setSnippets([]);
+      setFilteredSnippets([]);
     } finally {
       setLoading(false);
     }
   };
 
   const filterSnippets = () => {
-    let filtered = [...snippets];
+    let filtered = [...(snippets || [])];
 
     if (selectedLanguage !== 'all') {
       filtered = filtered.filter(s => s.language === selectedLanguage);
@@ -71,7 +73,7 @@ function Snippets({ onInsertSnippet }) {
       filtered = filtered.filter(s =>
         s.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         s.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        s.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+        (s.tags || []).some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
 

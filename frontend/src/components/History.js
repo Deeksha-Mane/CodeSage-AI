@@ -29,17 +29,19 @@ function History() {
         }
       });
       const data = await response.json();
-      setReviews(data.reviews);
-      setFilteredReviews(data.reviews);
+      setReviews(data.reviews || []);
+      setFilteredReviews(data.reviews || []);
     } catch (error) {
       console.error('Error fetching history:', error);
+      setReviews([]);
+      setFilteredReviews([]);
     } finally {
       setLoading(false);
     }
   };
 
   const filterReviews = () => {
-    let filtered = [...reviews];
+    let filtered = [...(reviews || [])];
 
     // Search filter
     if (searchTerm) {

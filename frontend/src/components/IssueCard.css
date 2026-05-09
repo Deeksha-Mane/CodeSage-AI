@@ -126,3 +126,111 @@
   color: #27ae60;
   font-weight: 600;
 }
+
+/* Premium Markdown Styling for Issue Cards */
+.issue-card .markdown-content {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 3px solid #2563eb;
+}
+
+.issue-card .markdown-content h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0.8rem 0 0.4rem 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.issue-card .markdown-content h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  margin: 0.6rem 0 0.3rem 0;
+}
+
+.issue-card .markdown-content p {
+  margin: 0.4rem 0;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.issue-card .markdown-content ul,
+.issue-card .markdown-content ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.issue-card .markdown-content li {
+  margin: 0.3rem 0;
+  line-height: 1.5;
+  color: #475569;
+}
+
+.issue-card .markdown-content pre {
+  background: #1e293b;
+  border-radius: 6px;
+  padding: 0.8rem;
+  overflow-x: auto;
+  margin: 0.6rem 0;
+  border: 1px solid #334155;
+}
+
+.issue-card .markdown-content code {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.85em;
+}
+
+.issue-card .markdown-content .inline-code {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+.issue-card .markdown-content pre code {
+  color: #e2e8f0;
+  background: transparent;
+}
+
+.issue-card .markdown-content strong {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.issue-card .markdown-content em {
+  font-style: italic;
+  color: #64748b;
+}
+
+.issue-card .markdown-content blockquote {
+  border-left: 3px solid #2563eb;
+  padding-left: 0.8rem;
+  margin: 0.6rem 0;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Code block scrollbar */
+.issue-card .markdown-content pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.issue-card .markdown-content pre::-webkit-scrollbar-track {
+  background: #0f172a;
+  border-radius: 3px;
+}
+
+.issue-card .markdown-content pre::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 3px;
+}
+
+.issue-card .markdown-content pre::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}

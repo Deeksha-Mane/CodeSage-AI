@@ -73,3 +73,26 @@ class ChangePasswordRequest(BaseModel):
 
 class DeleteAccountRequest(BaseModel):
     password: str
+
+
+class ChatRequest(BaseModel):
+    message: str
+    context: Optional[str] = ""
+
+
+class ChatResponse(BaseModel):
+    response: str
+
+
+class CodeConvertRequest(BaseModel):
+    code: str
+    from_language: str
+    to_language: str
+
+
+class CodeConvertResponse(BaseModel):
+    success: bool
+    converted_code: Optional[str] = None
+    error: Optional[str] = None
+    from_language: str
+    to_language: str
