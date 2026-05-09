@@ -71,11 +71,13 @@ Provide ONLY the corrected code in a proper code block with syntax highlighting.
     
     def chat(self, message: str, context: str = "") -> str:
         """Chat with AI about coding questions"""
+        context_section = f"**Code Context:**\n```\n{context}\n```" if context else ""
+        
         prompt = f"""You are a professional coding assistant. Answer the user's question with well-formatted, premium-quality responses.
 
 **User Question:** {message}
 
-{f"**Code Context:**\n```\n{context}\n```" if context else ""}
+{context_section}
 
 Provide a comprehensive, well-structured answer using:
 - Markdown formatting (headers, bold, italic)
